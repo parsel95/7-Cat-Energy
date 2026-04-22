@@ -92,19 +92,10 @@ function init() {
 
   let placemark = new ymaps.Placemark(center, {}, {
     iconLayout: 'default#image',
-    iconImageHref: './img/map-pin-small.png',
-    iconImageSize: [57, 53],
+    iconImageHref: screen.width >= 768 ? './img/map-pin-large.png' : './img/map-pin-small.png',
+    iconImageSize: screen.width >= 768 ? [113, 106] : [57, 53],
     iconImageoffset: [0, 0]
   });
-
-  if (notMobileWidthMediaQuery.matches) {
-    placemark = new ymaps.Placemark(center, {}, {
-      iconLayout: 'default#image',
-      iconImageHref: './img/map-pin-large.png',
-      iconImageSize: [113, 103],
-      iconImageoffset: [0, 0]
-    });
-  }
 
   map.controls.remove('geolocationControl'); // удаляем геолокацию
   map.controls.remove('searchControl'); // удаляем поиск
